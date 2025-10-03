@@ -16,7 +16,7 @@ app.use(compression());
 const DEFAULT_AVG_MINUTES = 5;
 const MAX_SERVICE_SAMPLES = 100;
 const DEFAULT_QUEUE_ID = 'default';
-const DEFAULT_QUEUE_NAME = 'Main queue';
+const DEFAULT_QUEUE_NAME = 'Main';
 
 const queues = new Map();
 

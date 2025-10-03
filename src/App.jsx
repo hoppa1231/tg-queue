@@ -651,7 +651,7 @@ export default function TelegramQueueWebApp() {
                     value={selectedQueueId || ""}
                     onChange={handleQueueSelectionChange}
                     className="rounded-xl border px-3 py-2 bg-transparent text-sm"
-                    style={{ borderColor: "var(--border)", color: "var(--tg-text)" }}
+                    style={{ borderColor: "var(--border)", color: "var(--tg-text)", maxWidth: "8rem" }}
                     disabled={loading || busy || deletingQueue}
                   >
                     {queueList.length === 0 ? (
@@ -721,7 +721,7 @@ export default function TelegramQueueWebApp() {
                 )}
               </h1>
               <p className="text-sm mt-1" style={{ color: "var(--tg-hint)" }}>
-                {isDemo ? "Демо-режим (локальное хранение)" : "Работа с API"}
+                {isDemo ? "Демо-режим (локальное хранение)" : "Онлайн"}
               </p>
             </div>
           </div>
@@ -792,7 +792,7 @@ export default function TelegramQueueWebApp() {
             )}
           </div>
           <div className="p-4 flex items-center justify-between">
-            <div className="text-xs" style={{ color: "var(--tg-hint)" }}> Очередь positions update instantly for everyone in line.
+            <div className="text-xs" style={{ color: "var(--tg-hint)" }}> Очередь обновляется одновременно для всех.
             </div>
             {isAdmin && (
               <button
@@ -810,7 +810,7 @@ export default function TelegramQueueWebApp() {
         <footer className="py-2 text-center text-xs" style={{ color: "var(--tg-hint)" }}>
           {isDemo
             ? "Демо-режим: изменения сохраняются на этом устройстве."
-            : "Работает на Telegram WebApp API."}
+            : "Авторизация через Telegram."}
         </footer>
       </div>
     </div>
