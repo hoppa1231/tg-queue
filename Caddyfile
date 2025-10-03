@@ -1,0 +1,7 @@
+m4xkim.ru {
+  encode zstd gzip
+  @static {
+    path /assets/* /favicon.ico /robots.txt
+  }
+  reverse_proxy app:3000
+}

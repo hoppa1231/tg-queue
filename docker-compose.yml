@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    container_name: tg-queue-app
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      # - BOT_TOKEN=${BOT_TOKEN}     # если нужно
+    expose:
+      - "3000"
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2
+    container_name: tg-queue-caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+    restart: unless-stopped
+
+volumes:
+  caddy_data:
+  caddy_config:
