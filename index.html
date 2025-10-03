@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0b1020" />
+    <title>Queue WebApp</title>
+
+    <!-- Tailwind (для прототипа достаточно CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Telegram WebApp API (безопасно подключать; в Telegram объект все равно будет доступен) -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <style>
+      :root {
+        /* дефолтные цвета, пока Telegram не применил тему */
+        --tg-bg: #0b1020;
+        --tg-text: #e5e7eb;
+      }
+      html, body, #root { height: 100%; }
+      body {
+        margin: 0;
+        background: var(--tg-bg);
+        color: var(--tg-text);
+        overscroll-behavior-y: contain;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    </style>
+
+    <script>
+      // Чтобы в браузере (вне Telegram) тоже занимало полный экран,
+      // держим CSS-переменную с реальной высотой вьюпорта.
+      (function () {
+        function setVH() {
+          document.documentElement.style.setProperty(
+            '--tg-viewport-height',
+            window.innerHeight + 'px'
+          );
+        }
+        setVH();
+        window.addEventListener('resize', setVH);
+      })();
+
+      // ⚙️ Если нужно, можно явно указать базу API (по умолчанию — тот же домен)
+      // window.API_BASE = ""; // тот же домен (по умолчанию в коде и так так)
+      // window.API_BASE = "https://example.com"; // если вынесете API
+    </script>
+
+
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Vite подключает React-приложение отсюда -->
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
